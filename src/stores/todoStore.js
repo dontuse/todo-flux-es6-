@@ -1,13 +1,10 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import {EventEmitter} from 'events';
 import TodoConstants from '../constants/TodoConstants';
-import assign from 'object-assign';
 
-var CHANGE_EVENT = 'change';
+let CHANGE_EVENT = 'change';
 
-// приватная переменная чтобы хранить тудухи
-// мы ее не можем изменять, не используя действия
-var _todos = {};
+let _todos = {};
 
 /**
  * Create a TODO item.
@@ -32,7 +29,7 @@ function create(text) {
  *     updated.
  */
 function update(id, updates) {
-    _todos[id] = assign({}, _todos[id], updates);
+    _todos[id] = Object.assign({}, _todos[id], updates);
 }
 
 /**
@@ -66,7 +63,7 @@ function destroyCompleted() {
     }
 }
 
-var TodoStore = assign({}, EventEmitter.prototype, {
+var TodoStore = Object.assign({}, EventEmitter.prototype, {
 
     /**
      * Tests whether all the remaining TODO items are marked as completed.
