@@ -160,4 +160,4 @@ AppDispatcher.register(function (action) {
     }
 });
 
-module.exports = TodoStore;
+export default TodoStore;
